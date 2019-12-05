@@ -112,3 +112,176 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(article) {
+
+    let div = document.createElement("div");
+    div.classList.add("article");
+
+    let headingAndCloseButtonDiv = document.createElement("div");
+    headingAndCloseButtonDiv.classList.add("headingAndCloseButtonDiv");
+    div.appendChild(headingAndCloseButtonDiv);
+
+      let h2 = document.createElement("h2");
+      h2.textContent = article.title;
+      headingAndCloseButtonDiv.appendChild(h2);
+    
+      let closeButton = document.createElement("div");
+      closeButton.classList.add("closeButton");
+      closeButton.textContent = "X";
+      headingAndCloseButtonDiv.appendChild(closeButton);
+
+    let pDate = document.createElement("p");
+    pDate.classList.add("date");
+    pDate.textContent = article.date;
+    div.appendChild(pDate);
+
+    let p1 = document.createElement("p");
+    p1.textContent = article.firstParagraph;
+    div.appendChild(p1);
+
+    let p2 = document.createElement("p");
+    p2.textContent = article.secondParagraph;
+    div.appendChild(p2);
+
+    let p3 = document.createElement("p");
+    p3.textContent = article.thirdParagraph;
+    div.appendChild(p3);
+
+    // Add event for removing article from list
+    closeButton.addEventListener("click", () => {
+      let articlesContainer = document.querySelector(".articles");
+      articlesContainer.removeChild(div);
+    })
+
+    // Add events for opening and closing article
+    let span = document.createElement("span");
+    span.textContent = "\u25BC Read more... \u25BC";
+    span.classList.add("expandButton");
+    span.addEventListener("click", () => {
+
+      div.classList.toggle("article-open");
+
+      if (div.classList.contains("article-open"))
+        { span.textContent = "\u25B2 Collapse \u25B2"; }
+      else
+      { span.textContent = "\u25BC Read more... \u25BC"; }
+    
+    } )
+    div.appendChild(span);
+
+    return div;
+
+}
+
+// add all the articles to the .articles div
+let articlesContainer = document.querySelector(".articles");
+
+let articlesHTML = data.map(article => createArticle(article));
+
+articlesHTML.forEach(articleHTML => articlesContainer.appendChild(articleHTML));
+
+// create a form to add a new article
+
+let body = document.querySelector("body");
+body.appendChild(postArticle());
+
+// function to write a new article
+function postArticle() {
+
+  let div = document.createElement("div");
+  div.classList.add("postArticle");
+
+  let h2 = document.createElement("h2");
+  h2.textContent = "Post a New Article";
+  div.appendChild(h2);
+
+  let form = document.createElement("form");
+  div.appendChild(form);
+
+    // create label and input field for article title
+    let labelTitle = document.createElement("label");
+    labelTitle.textContent = "Article Title";
+    labelTitle.setAttribute("for", "inputTitle");
+    form.appendChild(labelTitle);
+
+    let inputTitle = document.createElement("input");
+    inputTitle.placeholder = "Article Title";
+    inputTitle.id = "inputTitle";
+    form.appendChild(inputTitle);
+
+    // create label and input field for article date
+    let labelDate = document.createElement("label");
+    labelDate.textContent = "Date of Publication";
+    labelDate.setAttribute("for", "inputDate");
+    form.appendChild(labelDate);
+
+    let inputDate = document.createElement("input");
+    inputDate.placeholder = "Date of Publication";
+    inputDate.id = "inputDate";
+    form.appendChild(inputDate);
+
+    // create label and input field for paragraph 1
+    let labelP1 = document.createElement("label");
+    labelP1.textContent = "Paragraph 1";
+    labelP1.setAttribute("for", "inputP1");
+    form.appendChild(labelP1);
+
+    let inputP1 = document.createElement("textarea");
+    inputP1.placeholder = "Paragraph 1 goes here";
+    inputP1.id = "inputP1";
+    form.appendChild(inputP1);
+
+    // create label and input field for paragraph 2
+    let labelP2 = document.createElement("label");
+    labelP2.textContent = "Paragraph 2";
+    labelP2.setAttribute("for", "inputP2");
+    form.appendChild(labelP2);
+
+    let inputP2 = document.createElement("textarea");
+    inputP2.placeholder = "Paragraph 2 goes here";
+    inputP2.id = "inputP2";
+    form.appendChild(inputP2);
+
+    // create label and input field for paragraph 3
+    let labelP3 = document.createElement("label");
+    labelP3.textContent = "Paragraph 3";
+    labelP3.setAttribute("for", "inputP3");
+    form.appendChild(labelP3);
+
+    let inputP3 = document.createElement("textarea");
+    inputP3.placeholder = "Paragraph 3 goes here";
+    inputP3.id = "inputP3";
+    form.appendChild(inputP3);
+
+    // create submit button
+    let button = document.createElement("button");
+    button.textContent = "Post Article";
+    form.appendChild(button);
+
+    // create events for submit button
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      let article = {
+        title: inputTitle.value,
+        date: inputDate.value,
+
+        firstParagraph: inputP1.value,
+        secondParagraph: inputP2.value,
+        thirdParagraph: inputP3.value
+      }
+
+      articlesContainer.appendChild(createArticle(article));
+      successMessage.classList.toggle("success");
+
+    })
+
+    // create success message
+    let successMessage = document.createElement("p");
+    successMessage.textContent = "Your article has been posted.";
+    form.appendChild(successMessage);
+
+  return div;
+
+}
