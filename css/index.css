@@ -103,7 +103,74 @@
   background-color: white;
 }
 .article-open {
-  height: 400px;
+  height: auto;
+}
+.headingAndCloseButtonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.headingAndCloseButtonDiv h2 {
+  width: 80%;
+}
+.headingAndCloseButtonDiv .closeButton {
+  background-color: #CC3333;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10%;
+  cursor: pointer;
+}
+.postArticle {
+  width: 80%;
+  margin: 0% auto;
+  background-color: #EEEECC;
+  padding: 0.5% 1%;
+}
+.postArticle h2 {
+  font-size: 2rem;
+}
+.postArticle form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.postArticle form label {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+.postArticle form input,
+.postArticle form textarea {
+  width: 95%;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 0 0.5rem;
+  margin: 0 2%;
+  font-family: Roboto, sans-serif;
+  border-radius: 2px;
+}
+.postArticle form button {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 0 1.5rem;
+  margin: 2% auto;
+  border-radius: 5px;
+}
+.postArticle form p {
+  margin: 0 auto;
+  font-size: 2rem;
+  color: #388E3C;
+  visibility: hidden;
+}
+.postArticle form .success {
+  visibility: visible;
 }
 html,
 body {

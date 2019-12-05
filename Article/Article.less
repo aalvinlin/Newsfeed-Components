@@ -45,6 +45,98 @@
   height: auto;
 }
 
+.headingAndCloseButtonDiv {
+  width: 100%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  h2 {
+    width: 80%;
+  }
 
 
+  .closeButton {
+    background-color: #CC3333;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10%;
 
+    cursor: pointer;
+    
+  }
+
+}
+
+.postArticle {
+
+  width: 80%;
+  margin: 0% auto;
+
+  background-color: #EEEECC; // #EEEDE6;
+  padding: 0.5% 1%;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  form {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    label {
+      font-weight: bold;
+
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
+
+    input, textarea {
+
+      width: 95%;
+
+      font-size: 2rem;
+      line-height: 3rem;
+
+      padding: 0 0.5rem;
+      margin: 0 2%;
+
+      font-family: Roboto, sans-serif;
+      border-radius: 2px;
+    }
+
+    button {
+      font-size: 2rem;
+      line-height: 3rem;
+      padding: 0 1.5rem;
+      
+      margin: 2% auto;
+
+      border-radius: 5px;
+    }
+
+    p {
+
+      margin: 0 auto;
+
+      font-size: 2rem;
+      color: #388E3C;
+
+      visibility: hidden;
+    }
+
+    .success {
+      visibility: visible;
+    }
+  }
+
+}
